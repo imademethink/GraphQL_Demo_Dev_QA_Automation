@@ -1,0 +1,16 @@
+type Supplier {
+    id: ID!
+    companyName: String!
+    location: String!
+}
+
+type Product {
+    id: ID!
+    name: String!
+    price: Float!
+    suppliers: [Supplier!]!
+}
+
+type Query {
+    product(id: ID!): Product
+}

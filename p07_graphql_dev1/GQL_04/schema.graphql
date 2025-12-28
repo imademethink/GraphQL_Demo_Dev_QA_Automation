@@ -1,0 +1,21 @@
+type Supplier {
+    id: ID!
+    companyName: String!
+    location: String!
+}
+
+type Product {
+    id: ID!
+    name: String!
+    price: Float!
+    suppliers(limit: Int): [Supplier!]!
+}
+
+type Query {
+    product(id: ID!): Product
+}
+
+# New Mutation type to handle data modification
+type Mutation {
+    deleteProduct(id: ID!): Boolean!
+}

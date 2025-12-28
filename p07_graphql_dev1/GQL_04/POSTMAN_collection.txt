@@ -1,0 +1,93 @@
+{
+	"info": {
+		"name": "E-commerce PDP Mutation & Filtering Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Query: Get Product with Suppliers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetProduct($id: ID!) {\n  product(id: $id) {\n    name\n    price\n    suppliers {\n      companyName\n      location\n    }\n  }\n}",
+						"variables": "{\n  \"id\": \"1\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/graphql",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8000",
+					"path": ["graphql"]
+				}
+			}
+		},
+		{
+			"name": "Query: Filter Suppliers by Location",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetByLocation($id: ID!, $loc: String) {\n  product(id: $id) {\n    name\n    suppliers(location: $loc) {\n      companyName\n      location\n    }\n  }\n}",
+						"variables": "{\n  \"id\": \"1\",\n  \"loc\": \"Tokyo\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/graphql",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8000",
+					"path": ["graphql"]
+				}
+			}
+		},
+		{
+			"name": "Query: Limit Suppliers List",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetLimited($id: ID!, $max: Int) {\n  product(id: $id) {\n    suppliers(limit: $max) {\n      companyName\n    }\n  }\n}",
+						"variables": "{\n  \"id\": \"1\",\n  \"max\": 1\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/graphql",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8000",
+					"path": ["graphql"]
+				}
+			}
+		},
+		{
+			"name": "Mutation: Delete Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation RemoveProduct($id: ID!) {\n  deleteProduct(id: $id)\n}",
+						"variables": "{\n  \"id\": \"1\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/graphql",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8000",
+					"path": ["graphql"]
+				},
+				"description": "Deletes a product from the mock database. Returns true if successful."
+			}
+		}
+	]
+}

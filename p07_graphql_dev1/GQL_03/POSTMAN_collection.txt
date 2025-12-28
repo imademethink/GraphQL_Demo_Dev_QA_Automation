@@ -1,0 +1,140 @@
+{
+	"info": {
+		"name": "E-commerce PDP Advanced GraphQL Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Positive Case: Get Product with All Suppliers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetProductDetails($id: ID!) {\n  product(id: $id) {\n    name\n    price\n    suppliers {\n      companyName\n      location\n    }\n  }\n}",
+						"variables": "{\n  \"id\": \"1\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/graphql",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8000",
+					"path": ["graphql"]
+				},
+				"description": "Standard fetch for a product and its nested supplier list."
+			}
+		},
+		{
+			"name": "Filtering: Suppliers by Location",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetSuppliersByLoc($id: ID!, $loc: String) {\n  product(id: $id) {\n    name\n    suppliers(location: $loc) {\n      companyName\n      location\n    }\n  }\n}",
+						"variables": "{\n  \"id\": \"1\",\n  \"loc\": \"Tokyo\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/graphql",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8000",
+					"path": ["graphql"]
+				},
+				"description": "Filters the nested suppliers list to only return those matching the 'location' argument."
+			}
+		},
+		{
+			"name": "Pagination: Limit Supplier Results",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetLimitedSuppliers($id: ID!, $max: Int) {\n  product(id: $id) {\n    name\n    suppliers(limit: $max) {\n      companyName\n    }\n  }\n}",
+						"variables": "{\n  \"id\": \"1\",\n  \"max\": 2\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/graphql",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8000",
+					"path": ["graphql"]
+				},
+				"description": "Uses the 'limit' argument to restrict the number of nested items returned."
+			}
+		},
+		{
+			"name": "Combined: Filter by Location AND Limit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetFilteredAndLimited($id: ID!, $loc: String, $max: Int) {\n  product(id: $id) {\n    name\n    suppliers(location: $loc, limit: $max) {\n      companyName\n      location\n    }\n  }\n}",
+						"variables": "{\n  \"id\": \"1\",\n  \"loc\": \"California\",\n  \"max\": 1\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/graphql",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8000",
+					"path": ["graphql"]
+				},
+				"description": "Demonstrates using multiple arguments on a single nested field."
+			}
+		},
+		{
+			"name": "Negative Case: Invalid Data (ID 999)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetInvalidID($id: ID!) {\n  product(id: $id) {\n    name\n  }\n}",
+						"variables": "{\n  \"id\": \"999\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/graphql",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8000",
+					"path": ["graphql"]
+				},
+				"description": "Verifies that searching for a non-existent ID returns null data but 200 OK."
+			}
+		},
+		{
+			"name": "Negative Case: Schema Violation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query SchemaError {\n  product(id: \"1\") {\n    invalid_field_name\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/graphql",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8000",
+					"path": ["graphql"]
+				},
+				"description": "Requesting a field that does not exist in schema.graphql. Should return errors."
+			}
+		}
+	]
+}

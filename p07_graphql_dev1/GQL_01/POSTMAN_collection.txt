@@ -1,0 +1,116 @@
+{
+	"info": {
+		"name": "E-commerce PDP GraphQL Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Positive Case: Get Product with Suppliers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetProductDetails($id: ID!) {\n  product(id: $id) {\n    name\n    price\n    suppliers {\n      companyName\n      location\n    }\n  }\n}",
+						"variables": "{\n  \"id\": \"1\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Fetches a valid product and its nested suppliers."
+			},
+			"response": []
+		},
+		{
+			"name": "Filtering: Get Specific Product Fields",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetProductBasic($id: ID!) {\n  product(id: $id) {\n    name\n    price\n  }\n}",
+						"variables": "{\n  \"id\": \"2\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Demonstrates GraphQL's ability to filter fields. Only returns name and price without suppliers."
+			},
+			"response": []
+		},
+		{
+			"name": "Negative Case: Non-Existent Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetInvalidProduct($id: ID!) {\n  product(id: $id) {\n    name\n  }\n}",
+						"variables": "{\n  \"id\": \"999\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Testing a request for an ID that does not exist in the mock database."
+			},
+			"response": []
+		},
+		{
+			"name": "Negative Case: Schema Violation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query InvalidField {\n  product(id: \"1\") {\n    nonExistentField\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Testing the request of a field that does not exist in the .graphql schema."
+			},
+			"response": []
+		}
+	]
+}

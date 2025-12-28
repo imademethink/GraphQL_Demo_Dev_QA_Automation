@@ -1,0 +1,30 @@
+{
+	"info": {
+		"name": "E-commerce PDP Filtering Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Filtering: Get Suppliers in Tokyo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetProductWithFilteredSuppliers($id: ID!, $loc: String) {\n  product(id: $id) {\n    name\n    suppliers(location: $loc) {\n      companyName\n      location\n    }\n  }\n}",
+						"variables": "{\n  \"id\": \"1\",\n  \"loc\": \"Tokyo\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/graphql",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "8000",
+					"path": ["graphql"]
+				},
+				"description": "This scenario filters the nested suppliers list to only show those located in Tokyo."
+			}
+		}
+	]
+}

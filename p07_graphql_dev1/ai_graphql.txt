@@ -1,0 +1,88 @@
+
+GraphQL
+
+
+============================================
+Google AI Gemini conversation
+https://gemini.google.com/share/2d158842ab74
+============================================ 
+ 
+what is graphql
+
+thanks, could you provide a realistic module or project where graphql is more benificial compared to REST
+
+==> Project: E-commerce Product Detail Page (PDP)
+
+Based on above input, let's design a project for E-commerce Product Detail Page
+it is docker based project
+programming langauge is Python latest
+graph query query as following : 
+
+
+if request is correct then return 200 status code and valid response 
+
+HTTP POST method by default
+
+graphql aggrecator 	- QUERY
+					- NESTED GRAPHQL query
+graphql mutations 		- CREATE a resource at backend
+graphql subscriptions 	- for data changes - ONCREATE
+
+gql - schema
+
+prompt ====
+Based on the context of above discussion, please design a simple python and docker based project.
+It is for simple E-commerce Product Detail Page.
+it is docker based project.
+Programming langauge is Python with latest version.
+When user hits GraphQL query it returs product name, and product price.
+Provide the entire code with exact folder structure.
+Provide the required gql file.
+
+
+prompt ====
+Consider above entire discussion as the context.
+It is for simple E-commerce Product Detail Page.
+it is docker based project.
+Programming langauge is Python with latest version.
+When user hits GraphQL query it returs product name, product price, product supplier.
+Each product has three supplier. So GraphQL has nested response for product supplier section.
+Please generate relevant code.
+Again provide the entire code with exact folder structure.
+Provide the required gql file.
+
+thanks, pls just update graphql query for a specific location e.g. London so that I can use this query in postman
+query {
+product(id: "1") {
+name
+
+suppliers {companyName, location}}}
+
+don't change any python code
+
+
+prompt ====
+thanks
+now consider I have to development automation for given schema.graphql file.
+automation is a seperate project.
+seperate project is not docker based. seperate project code does not have any access to source code.
+seperate project uses python language with latest version.
+pls generate simple automation and provide entire code.
+
+
+prompt ====
+thanks
+now Consider above entire discussion as the context.
+ignore the automation part.
+It is for simple E-commerce Product Detail Page.
+it is docker based project.
+Programming langauge is Python with latest version.
+When user hits GraphQL query it returs product name, product price, product supplier.
+Each product has three supplier. So GraphQL has nested response for product supplier section.
+Add Mutations so user can delete a product.
+Please generate relevant code.
+Again provide the entire code with exact folder structure.
+Provide the required gql file.
+
+
+

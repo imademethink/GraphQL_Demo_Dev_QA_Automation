@@ -6,6 +6,8 @@ AI assisted sample GraphQL app development, manual and automation development us
 # POSTMAN collection available
 # Automation development using Python for positive and negative scenarios
 
+More info here : 
+
 ![thumbnail3](https://github.com/user-attachments/assets/a8c89fd6-13a6-4439-b8df-202cfd6f6151)
 
 Backend development prompt

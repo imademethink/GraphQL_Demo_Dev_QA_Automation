@@ -39,11 +39,16 @@ docker-compose up --build
 docker compose down
 
 # Manual testing using POSTMAN
-need to import POSTMAN collection from respective folder
+need to import POSTMAN collection from
+https://github.com/imademethink/GraphQL_Demo_Dev_QA_Automation/tree/main/all_POSTMAN
 
 
 # Automation
 Google Gemini AI designed a simple automation based on Python
+
+https://github.com/imademethink/GraphQL_Demo_Dev_QA_Automation/tree/main/p08_graphql_qa1
+
+https://github.com/imademethink/GraphQL_Demo_Dev_QA_Automation/tree/main/p08_graphql_qa2
 
 
 # Article on medium.com

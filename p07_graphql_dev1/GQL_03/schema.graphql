@@ -9,7 +9,7 @@ type Product {
     name: String!
     price: Float!
     # Added limit argument (Int)
-    suppliers(limit: Int): [Supplier!]!
+    suppliers(limit: Int, location: String): [Supplier!]!
 }
 
 type Query {

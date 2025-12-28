@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "0f18b28a-0313-4c5d-a842-f25996f51f73",
+		"name": "02_filtering",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3085350"
+	},
+	"item": [
+		{
+			"name": "1_filtering",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetProductWithLimitedSuppliers($productId: ID!, $maxSuppliers: Int) {\n  product(id: $productId) {\n    id\n    name\n    price\n    suppliers(limit: $maxSuppliers) {\n      companyName\n      location\n    }\n  }\n}",
+						"variables": "{\n  \"productId\": \"1\",\n  \"maxSuppliers\": 1\n}"
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/graphql",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "This scenario filters the nested suppliers list to only show those located in Tokyo."
+			},
+			"response": []
+		},
+		{
+			"name": "2_filtering_variable",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetProductWithFilteredSuppliers($id: ID!, $loc: String) {\n  product(id: $id) {\n    name\n    suppliers(location: $loc) {\n      companyName\n      location\n    }\n  }\n}",
+						"variables": "{\n  \"id\": \"1\",\n  \"loc\": \"Tokyo\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/graphql",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "This scenario filters the nested suppliers list to only show those located in Tokyo."
+			},
+			"response": []
+		},
+		{
+			"name": "3_filtering_variable_limit_keyword",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetProductWithFilteredSuppliers($id: ID!, $loc: String) {\n  product(id: $id) {\n    name\n    suppliers(location: $loc) {\n      companyName\n      location\n    }\n  }\n}",
+						"variables": "{\n  \"id\": \"1\",\n  \"loc\": \"Tokyo\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/graphql",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "This scenario filters the nested suppliers list to only show those located in Tokyo."
+			},
+			"response": []
+		}
+	]
+}

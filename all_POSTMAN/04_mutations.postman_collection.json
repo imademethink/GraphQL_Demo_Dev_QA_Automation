@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "8fe3e63b-8146-4200-bb5b-6bd0ae606922",
+		"name": "04_mutations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3085350"
+	},
+	"item": [
+		{
+			"name": "get_1_products",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetProduct($id: ID!) {\n  product(id: $id) {\n    name\n    price\n    suppliers {\n      companyName\n      location\n    }\n  }\n}",
+						"variables": "{\n  \"id\": \"2\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/graphql",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation RemoveProduct($id: ID!) {\n  deleteProduct(id: $id)\n}",
+						"variables": "{\n  \"id\": \"1\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/graphql",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Deletes a product from the mock database. Returns true if successful."
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "4281c427-30b2-457c-925f-e471e885c493",
+		"name": "03_limit_keyword",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3085350"
+	},
+	"item": [
+		{
+			"name": "filtering_on_location_variable",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetProductWithFilteredSuppliers($productId: ID!, $loc: String) {\n  product(id: $productId) {\n    name\n    price\n    # Passing the location filter to the nested field\n    suppliers(location: $loc) {\n      companyName\n      location\n    }\n  }\n}",
+						"variables": "{\n  \"productId\": \"2000\",\n  \"loc\": \"California\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/graphql",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Uses the 'limit' argument to restrict the number of nested items returned."
+			},
+			"response": []
+		},
+		{
+			"name": "filtering_on_limit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetLimitedSuppliers($id: ID!, $max: Int) {\n  product(id: $id) {\n    name\n    # Using the limit keyword here\n    suppliers(limit: $max) {\n      companyName\n      location\n    }\n  }\n}",
+						"variables": "{\n  \"id\": \"1\",\n  \"max\": 1\n}"
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/graphql",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Uses the 'limit' argument to restrict the number of nested items returned."
+			},
+			"response": []
+		}
+	]
+}

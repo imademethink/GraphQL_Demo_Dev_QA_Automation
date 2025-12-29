@@ -1,11 +1,16 @@
 # GraphQL Demo Dev QA Automation
-# AI assisted sample GraphQL app development, manual and automation development using Python
-# Google Gemini AI based simple GraphQL app
-# API backend stack development using Python
-# POSTMAN collection available
-# Automation development using Python for positive and negative scenarios
+AI assisted sample GraphQL app development, manual and automation development using Python
 
-More info on Youtube: https://www.youtube.com/watch?v=QVhE7z7RfDs 
+Google Gemini AI based simple GraphQL app
+
+API backend stack development using Python
+
+POSTMAN collection available
+
+Automation development using Python for positive and negative scenarios
+
+
+# More info on Youtube: https://www.youtube.com/watch?v=QVhE7z7RfDs 
 
 ![thumbnail3](https://github.com/user-attachments/assets/a8c89fd6-13a6-4439-b8df-202cfd6f6151)
 

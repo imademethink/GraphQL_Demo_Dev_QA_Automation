@@ -55,6 +55,14 @@ https://github.com/imademethink/GraphQL_Demo_Dev_QA_Automation/tree/main/p08_gra
 
 https://github.com/imademethink/GraphQL_Demo_Dev_QA_Automation/tree/main/p08_graphql_qa2
 
+# What makes it stand out?
+
+GraphQL is query based so natural advantages of structured query. No over-fetching or under-fetching data.
+
+# Tech Stack:
+
+Python FastAPI, GraphQL
+
 
 # Article on medium.com
 
